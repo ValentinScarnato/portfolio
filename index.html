@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valentin Scarnato — Management du Système d'Information</title>
+<meta name="description" content="Portfolio de Valentin Scarnato — Étudiant en Master Management du Système d'Information à l'IAE de Montpellier. Gestion de projet, data & BI, ERP.">
+<meta name="author" content="Valentin Scarnato">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Valentin Scarnato — Management du Système d'Information">
+<meta property="og:description" content="Étudiant en Master MSI. Je relie le recueil des besoins métier à la donnée et au pilotage.">
+<meta property="og:image" content="photo.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23E8613C'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#F7F5F0;color:#1C1B18;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  ::selection{background:#E8613C;color:#fff}
+  a{color:inherit;text-decoration:none}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+  .wrap{min-height:100vh;background:#F7F5F0}
+  header{position:sticky;top:0;z-index:50;background:rgba(247,245,240,0.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #E2DCD0}
+  nav{max-width:1180px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.02em}
+  .dot{width:9px;height:9px;border-radius:50%;background:#E8613C;display:inline-block;animation:blink 2.4s ease-in-out infinite}
+  .navright{display:flex;align-items:center;gap:30px}
+  .navlinks{display:flex;gap:30px;font-size:14.5px;color:#5C574E;font-weight:500}
+  .navlinks a{transition:color .2s}
+  .navlinks a:hover{color:#1C1B18}
+  .langtoggle{display:flex;align-items:center;border:1px solid #D8D1C4;border-radius:999px;overflow:hidden;font-size:12.5px;font-weight:600;font-family:'Bricolage Grotesque',sans-serif}
+  .langtoggle button{border:none;padding:7px 14px;cursor:pointer;font-family:inherit;font-weight:600;font-size:12.5px;background:transparent;color:#7A746A}
+  .langtoggle button.active{background:#1C1B18;color:#F7F5F0}
+
+  main{max-width:1180px;margin:0 auto;padding:0 40px}
+
+  .hero{display:grid;grid-template-columns:1.35fr 0.85fr;gap:56px;align-items:center;padding:84px 0 96px}
+  .badge{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border:1px solid #E2DCD0;border-radius:999px;font-size:13px;font-weight:500;color:#5C574E;margin-bottom:30px}
+  .badge .gdot{width:7px;height:7px;border-radius:50%;background:#3FA37A;display:inline-block}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(48px,6vw,84px);line-height:0.96;letter-spacing:-0.035em;margin-bottom:24px}
+  .hero h1 span{color:#E8613C}
+  .hero-role{font-size:clamp(18px,2vw,22px);line-height:1.5;color:#3A362F;max-width:30ch;margin-bottom:14px;font-weight:500}
+  .hero-tag{font-size:16px;line-height:1.6;color:#7A746A;max-width:46ch;margin-bottom:34px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-dark{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;background:#1C1B18;color:#F7F5F0;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s,background .2s}
+  .btn-dark:hover{background:#E8613C;transform:translateY(-2px)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border:1px solid #D2CABB;border-radius:999px;font-weight:600;font-size:15px;transition:border-color .2s,transform .2s}
+  .btn-ghost:hover{border-color:#1C1B18;transform:translateY(-2px)}
+  .photo-frame{position:relative}
+  .photo-frame .deco{position:absolute;inset:14px -14px -14px 14px;border:1.5px solid #E8613C;border-radius:6px;z-index:0}
+  .photo-frame .pic{position:relative;z-index:1;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:#EDE7DC;box-shadow:0 20px 50px -24px rgba(28,27,24,0.45)}
+  .photo-frame .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+
+  .marquee{border-top:1px solid #E2DCD0;border-bottom:1px solid #E2DCD0;padding:26px 0;display:flex;flex-wrap:wrap;gap:14px 36px;align-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(15px,1.5vw,19px);color:#1C1B18}
+  .marquee span{display:inline-flex;align-items:center;gap:36px}
+  .marquee .star{color:#E8613C}
+
+  section{scroll-margin-top:80px}
+  .about{padding:96px 0;display:grid;grid-template-columns:0.4fr 1fr;gap:48px}
+  .eyebrow{font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#E8613C}
+  .about-lead{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:clamp(22px,2.6vw,30px);line-height:1.4;letter-spacing:-0.02em;color:#26241F}
+  .facts{display:flex;flex-wrap:wrap;gap:14px 44px;margin-top:38px;padding-top:32px;border-top:1px solid #E2DCD0}
+  .fact{min-width:120px}
+  .fact-val{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:26px;letter-spacing:-0.02em}
+  .fact-lbl{font-size:13.5px;color:#7A746A;margin-top:3px}
+
+  .skills{padding:40px 0 96px}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+  .sec-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(30px,4vw,48px);letter-spacing:-0.03em}
+  .sec-head p{font-size:15px;color:#7A746A;max-width:34ch}
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .skill-card{background:#FEFCF8;border:1px solid #E8E2D6;border-radius:8px;padding:26px;transition:border-color .25s,transform .25s}
+  .skill-card:hover{border-color:#1C1B18;transform:translateY(-3px)}
+  .skill-card .top{display:flex;align-items:center;gap:11px;margin-bottom:18px}
+  .skill-card .num{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;color:#E8613C}
+  .skill-card h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;letter-spacing:-0.01em}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13.5px;color:#3A362F;background:#F1ECE2;border-radius:6px;padding:6px 11px}
+
+  .work{padding:40px 0 96px}
+  .work h2.title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(30px,4vw,48px);letter-spacing:-0.03em;margin-bottom:44px}
+  .exp{display:grid;grid-template-columns:0.32fr 1fr;gap:28px;padding:30px 0;border-top:1px solid #E2DCD0;transition:padding-left .25s}
+  .exp:hover{padding-left:8px}
+  .exp .period{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;color:#E8613C;letter-spacing:0.04em}
+  .exp .place{font-size:13.5px;color:#7A746A;margin-top:4px}
+  .exp .kind{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:#3A362F;background:#EDE7DC;border-radius:999px;padding:4px 11px}
+  .exp h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.2vw,25px);letter-spacing:-0.02em;margin-bottom:8px}
+  .exp .desc{font-size:15.5px;line-height:1.6;color:#564E48;max-width:60ch}
+  .work .bottomline{border-top:1px solid #E2DCD0}
+
+  .projects{padding:40px 0 96px}
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .proj{background:#FEFCF8;border:1px solid #E8E2D6;border-radius:10px;padding:30px;display:flex;flex-direction:column;transition:border-color .25s,transform .25s,box-shadow .25s}
+  .proj:hover{border-color:#1C1B18;transform:translateY(-4px);box-shadow:0 18px 40px -28px rgba(28,27,24,0.5)}
+  .proj .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+  .proj .num{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#E8613C}
+  .proj .year{font-size:12.5px;color:#9A9388;font-weight:500}
+  .proj h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;line-height:1.25;letter-spacing:-0.02em;margin-bottom:10px}
+  .proj .desc{font-size:14.5px;line-height:1.6;color:#564E48;margin-bottom:18px}
+  .proj .impact-box{margin:auto 0 20px;padding:16px 0;border-top:1px dashed #E2DCD0}
+  .proj .impact-lbl{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9A9388;margin-bottom:5px}
+  .proj .impact-val{font-size:14.5px;font-weight:600;color:#1C1B18;line-height:1.45}
+  .proj .tags{display:flex;flex-wrap:wrap;gap:7px}
+  .proj .tag{font-size:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:#3A362F;border:1px solid #DDD6C8;border-radius:6px;padding:4px 9px}
+
+  footer{background:#1C1B18;color:#F7F5F0;margin-top:40px}
+  .foot-inner{max-width:1180px;margin:0 auto;padding:96px 40px 56px}
+  .foot-grid{display:grid;grid-template-columns:1fr;gap:40px}
+  footer h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(36px,6vw,72px);letter-spacing:-0.035em;line-height:1;margin:20px 0 30px;max-width:16ch}
+  .btn-accent{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;background:#E8613C;color:#fff;border-radius:999px;font-weight:600;font-size:15.5px;transition:transform .2s,background .2s}
+  .btn-accent:hover{background:#F2734F;transform:translateY(-2px)}
+  .btn-dline{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border:1px solid #4A4842;color:#F7F5F0;border-radius:999px;font-weight:600;font-size:15.5px;transition:border-color .2s,transform .2s}
+  .btn-dline:hover{border-color:#F7F5F0;transform:translateY(-2px)}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;padding-top:40px;border-top:1px solid #34322C}
+  .ci-lbl{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#86807A;margin-bottom:6px}
+  .ci-val{font-size:15.5px;font-weight:500;color:#F7F5F0;transition:color .2s}
+  .ci-val:hover{color:#E8613C}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:64px;font-size:13px;color:#86807A}
+
+  [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+  [data-reveal].in{opacity:1;transform:translateY(0)}
+
+  @media (max-width:860px){
+    nav{padding:16px 22px}
+    .navlinks{display:none}
+    main{padding:0 22px}
+    .foot-inner{padding:72px 22px 48px}
+    .hero{grid-template-columns:1fr;gap:40px;padding:54px 0 70px}
+    .photo-frame{max-width:340px}
+    .about{grid-template-columns:1fr;gap:18px;padding:70px 0}
+    .exp{grid-template-columns:1fr;gap:10px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+  <header>
+    <nav>
+      <a href="#top" class="brand"><span class="dot"></span>VS</a>
+      <div class="navright">
+        <div class="navlinks">
+          <a href="#about" data-t="navAbout"></a>
+          <a href="#skills" data-t="navSkills"></a>
+          <a href="#work" data-t="navWork"></a>
+          <a href="#projects" data-t="navProjects"></a>
+          <a href="#contact" data-t="navContact"></a>
+        </div>
+        <div class="langtoggle">
+          <button id="btn-fr">FR</button>
+          <button id="btn-en">EN</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div data-reveal>
+        <div class="badge"><span class="gdot"></span><span data-t="available"></span></div>
+        <h1>Valentin<br>Scarnato<span>.</span></h1>
+        <p class="hero-role" data-t="heroRole"></p>
+        <p class="hero-tag" data-t="heroTag"></p>
+        <div class="btns">
+          <a href="#contact" class="btn-dark"><span data-t="ctaContact"></span> →</a>
+          <a href="CV_Valentin_Scarnato.pdf" download class="btn-ghost"><span data-t="ctaCv"></span> ↓</a>
+        </div>
+      </div>
+      <div data-reveal class="photo-frame">
+        <div class="deco"></div>
+        <div class="pic"><img src="photo.png" alt="Valentin Scarnato"></div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee" id="focus"></section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div data-reveal><span class="eyebrow" data-t="navAbout"></span></div>
+      <div data-reveal>
+        <p class="about-lead" data-t="aboutLead"></p>
+        <div class="facts" id="facts"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills">
+      <div data-reveal class="sec-head">
+        <h2 data-t="skillsTitle"></h2>
+        <p data-t="skillsSub"></p>
+      </div>
+      <div class="skill-grid" id="skill-grid"></div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="work" class="work">
+      <h2 data-reveal class="title" data-t="workTitle"></h2>
+      <div id="exp-list"></div>
+      <div class="bottomline"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects">
+      <div data-reveal class="sec-head">
+        <h2 data-t="projectsTitle"></h2>
+        <p data-t="projectsSub"></p>
+      </div>
+      <div class="proj-grid" id="proj-grid"></div>
+    </section>
+  </main>
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <div class="foot-inner">
+      <div data-reveal class="foot-grid">
+        <div>
+          <span class="eyebrow" data-t="navContact"></span>
+          <h2 data-t="contactTitle"></h2>
+          <div class="btns">
+            <a href="mailto:valentin.scarnato.pro@gmail.com" class="btn-accent"><span data-t="contactCta"></span> →</a>
+            <a href="CV_Valentin_Scarnato.pdf" download class="btn-dline"><span data-t="ctaCv"></span> ↓</a>
+          </div>
+        </div>
+        <div class="contact-grid" id="contact-grid"></div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Valentin Scarnato</span>
+        <span data-t="footerNote"></span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const DATA = {
+  fr: {
+    navAbout:'À propos', navSkills:'Compétences', navWork:'Expériences', navProjects:'Projets', navContact:'Contact',
+    available:'Disponible pour l’alternance & le réseau',
+    heroRole:'Management du Système d’Information',
+    heroTag:'Étudiant en Master MSI à l’IAE de Montpellier. Je relie le recueil des besoins métier à la donnée et au pilotage.',
+    ctaContact:'Me contacter', ctaCv:'Télécharger le CV',
+    focus:['Gestion de projet','Systèmes d’information','Data & BI','ERP','Transformation digitale'],
+    aboutLead:'Après un BUT Informatique, je combine une approche fonctionnelle du recueil des besoins avec des compétences techniques en SQL, Python et Power BI — pour produire des tableaux de bord et des solutions utiles au pilotage et à l’amélioration des SI.',
+    facts:[
+      {value:'20 ans', label:'Saint-Martin-d’Hères (38)'},
+      {value:'Master MSI', label:'IAE de Montpellier · 2026–2028'},
+      {value:'900/990', label:'TOEIC — anglais professionnel'},
+      {value:'3 langues', label:'FR · EN · ES'},
+    ],
+    skillsTitle:'Compétences',
+    skillsSub:'Un profil hybride, à la frontière du fonctionnel et de la technique.',
+    skillGroups:[
+      {num:'01', title:'Gestion de projet', items:['Recueil de besoin','Cahier des charges','User Stories','Spécifications fonctionnelles','Gantt','RACI','KPIs','Agile · Scrum']},
+      {num:'02', title:'Développement', items:['C#','Python','SQL','Web (HTML/CSS)','Blazor','PostgreSQL','UML']},
+      {num:'03', title:'ERP', items:['Odoo','Dynamics 365','SAP']},
+      {num:'04', title:'Data & Microsoft 365', items:['Power BI','Power Apps','Power Automate','Excel','PowerPoint','Word']},
+    ],
+    workTitle:'Expériences professionnelles',
+    experiences:[
+      {period:'Sept. 2025 — Juil. 2026', place:'Crolles (38)', kind:'Alternance', org:'STMicroelectronics', desc:'Modernisation d’un outil de suivi des logs de production : recueil des besoins, modélisation de l’architecture cible, migration d’un environnement obsolète et pilotage Agile (sprints bimensuels, Microsoft Planner, matrice RACI).'},
+      {period:'Avr. 2025 — Juin 2025', place:'Crolles (38)', kind:'Stage', org:'Tronic’s Microsystems', desc:'Développement d’un outil de gestion de stock : étude des besoins métier, rédaction du cahier des charges, modélisation UML et conception de la base de données, puis migration d’un fichier Excel vers une application C# / Blazor.'},
+      {period:'Juin 2024 — Juil. 2024', place:'Annecy (74)', kind:'Projet universitaire', org:'Université Savoie Mont Blanc', desc:'Intégration d’un ERP Odoo pour une entreprise de restauration : analyse des besoins, paramétrage (ventes, stocks, RH, livraison), site e-commerce et automatisation des processus RH et logistiques.'},
+    ],
+    projectsTitle:'Projets',
+    projectsSub:'Des réalisations concrètes, du besoin métier à la mise en service.',
+    impactLabel:'Impact',
+    projects:[
+      {num:'01', year:'2025–26', title:'Suivi des logs de production', desc:'Scripts Python pour la récupération, l’analyse et le traitement des données ; base PostgreSQL et restitution via des dashboards Power BI interactifs.', impact:'Suivi des incidents et amélioration du rendement de production.', tags:['Python','PostgreSQL','Power BI','Agile']},
+      {num:'02', year:'2025', title:'Outil de gestion de stock', desc:'De l’Excel à l’application : conception de la base de données (UML / SQL), interface C# / Blazor et tests fonctionnels.', impact:'Un outil métier fiable remplaçant un suivi sur tableur.', tags:['C#','Blazor','SQL','UML']},
+      {num:'03', year:'2024', title:'Intégration ERP Odoo', desc:'Paramétrage complet (ventes, stocks, RH, livraison), site e-commerce et modules personnalisés pour une entreprise de restauration.', impact:'Processus RH et logistiques automatisés de bout en bout.', tags:['Odoo','ERP','E-commerce','Automatisation']},
+    ],
+    contactTitle:'Construisons des SI utiles, ensemble.',
+    contactCta:'M’écrire',
+    contactItems:[
+      {label:'Email', value:'valentin.scarnato.pro@gmail.com', href:'mailto:valentin.scarnato.pro@gmail.com'},
+      {label:'Téléphone', value:'07 83 55 65 81', href:'tel:+33783556581'},
+      {label:'Localisation', value:'Saint-Martin-d’Hères (38)', href:'#'},
+      {label:'Mobilité', value:'Permis B · Véhicule', href:'#'},
+    ],
+    footerNote:'Management du Système d’Information',
+  },
+  en: {
+    navAbout:'About', navSkills:'Skills', navWork:'Experience', navProjects:'Projects', navContact:'Contact',
+    available:'Open to apprenticeships & networking',
+    heroRole:'Information Systems Management',
+    heroTag:'MSc student in Information Systems Management at IAE Montpellier. I connect business-needs analysis to data and decision-making.',
+    ctaContact:'Get in touch', ctaCv:'Download CV',
+    focus:['Project management','Information systems','Data & BI','ERP','Digital transformation'],
+    aboutLead:'After a degree in Computer Science, I pair a functional approach to requirements gathering with technical skills in SQL, Python and Power BI — building dashboards and solutions that genuinely support steering and improving information systems.',
+    facts:[
+      {value:'Age 20', label:'Saint-Martin-d’Hères (38)'},
+      {value:'MSc ISM', label:'IAE Montpellier · 2026–2028'},
+      {value:'900/990', label:'TOEIC — professional English'},
+      {value:'3 languages', label:'FR · EN · ES'},
+    ],
+    skillsTitle:'Skills',
+    skillsSub:'A hybrid profile, between the functional and the technical.',
+    skillGroups:[
+      {num:'01', title:'Project management', items:['Requirements gathering','Specifications','User Stories','Functional specs','Gantt','RACI','KPIs','Agile · Scrum']},
+      {num:'02', title:'Development', items:['C#','Python','SQL','Web (HTML/CSS)','Blazor','PostgreSQL','UML']},
+      {num:'03', title:'ERP', items:['Odoo','Dynamics 365','SAP']},
+      {num:'04', title:'Data & Microsoft 365', items:['Power BI','Power Apps','Power Automate','Excel','PowerPoint','Word']},
+    ],
+    workTitle:'Professional experience',
+    experiences:[
+      {period:'Sep 2025 — Jul 2026', place:'Crolles (38)', kind:'Apprenticeship', org:'STMicroelectronics', desc:'Modernising a production-log monitoring tool: requirements gathering, target-architecture modelling, migration off a legacy environment, and Agile delivery (bi-weekly sprints, Microsoft Planner, RACI matrix).'},
+      {period:'Apr 2025 — Jun 2025', place:'Crolles (38)', kind:'Internship', org:'Tronic’s Microsystems', desc:'Building an inventory-management tool: business-needs study, specifications, UML modelling and database design, then migrating an Excel file into a C# / Blazor application.'},
+      {period:'Jun 2024 — Jul 2024', place:'Annecy (74)', kind:'University project', org:'Université Savoie Mont Blanc', desc:'Integrating an Odoo ERP for a catering company: needs analysis, configuration (sales, stock, HR, delivery), an e-commerce site and automation of HR and logistics processes.'},
+    ],
+    projectsTitle:'Projects',
+    projectsSub:'Concrete work, from business need to go-live.',
+    impactLabel:'Impact',
+    projects:[
+      {num:'01', year:'2025–26', title:'Production-log monitoring', desc:'Python scripts for data retrieval, analysis and processing; a PostgreSQL database and reporting through interactive Power BI dashboards.', impact:'Incident tracking and improved production yield.', tags:['Python','PostgreSQL','Power BI','Agile']},
+      {num:'02', year:'2025', title:'Inventory-management tool', desc:'From spreadsheet to application: database design (UML / SQL), a C# / Blazor interface and functional testing.', impact:'A reliable business tool replacing a spreadsheet workflow.', tags:['C#','Blazor','SQL','UML']},
+      {num:'03', year:'2024', title:'Odoo ERP integration', desc:'Full configuration (sales, stock, HR, delivery), an e-commerce site and custom modules for a catering company.', impact:'HR and logistics processes automated end to end.', tags:['Odoo','ERP','E-commerce','Automation']},
+    ],
+    contactTitle:'Let’s build information systems that matter.',
+    contactCta:'Email me',
+    contactItems:[
+      {label:'Email', value:'valentin.scarnato.pro@gmail.com', href:'mailto:valentin.scarnato.pro@gmail.com'},
+      {label:'Phone', value:'+33 7 83 55 65 81', href:'tel:+33783556581'},
+      {label:'Location', value:'Saint-Martin-d’Hères (38)', href:'#'},
+      {label:'Mobility', value:'Driving licence · Car', href:'#'},
+    ],
+    footerNote:'Information Systems Management',
+  }
+};
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function render(lang){
+  const c = DATA[lang];
+  document.documentElement.lang = lang;
+  // simple text bindings
+  document.querySelectorAll('[data-t]').forEach(el => { el.textContent = c[el.dataset.t]; });
+
+  // marquee
+  document.getElementById('focus').innerHTML = c.focus.map(f =>
+    `<span>${esc(f)}<span class="star">✦</span></span>`).join('');
+
+  // facts
+  document.getElementById('facts').innerHTML = c.facts.map(ft =>
+    `<div class="fact"><div class="fact-val">${esc(ft.value)}</div><div class="fact-lbl">${esc(ft.label)}</div></div>`).join('');
+
+  // skills
+  document.getElementById('skill-grid').innerHTML = c.skillGroups.map(g =>
+    `<div data-reveal class="skill-card">
+      <div class="top"><span class="num">${esc(g.num)}</span><h3>${esc(g.title)}</h3></div>
+      <div class="chips">${g.items.map(s=>`<span class="chip">${esc(s)}</span>`).join('')}</div>
+    </div>`).join('');
+
+  // experiences
+  document.getElementById('exp-list').innerHTML = c.experiences.map(e =>
+    `<div data-reveal class="exp">
+      <div>
+        <div class="period">${esc(e.period)}</div>
+        <div class="place">${esc(e.place)}</div>
+        <div class="kind">${esc(e.kind)}</div>
+      </div>
+      <div>
+        <h3>${esc(e.org)}</h3>
+        <p class="desc">${esc(e.desc)}</p>
+      </div>
+    </div>`).join('');
+
+  // projects
+  document.getElementById('proj-grid').innerHTML = c.projects.map(p =>
+    `<div data-reveal class="proj">
+      <div class="top"><span class="num">${esc(p.num)}</span><span class="year">${esc(p.year)}</span></div>
+      <h3>${esc(p.title)}</h3>
+      <p class="desc">${esc(p.desc)}</p>
+      <div class="impact-box">
+        <div class="impact-lbl">${esc(c.impactLabel)}</div>
+        <div class="impact-val">${esc(p.impact)}</div>
+      </div>
+      <div class="tags">${p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
+    </div>`).join('');
+
+  // contact items
+  document.getElementById('contact-grid').innerHTML = c.contactItems.map(ci =>
+    `<div><div class="ci-lbl">${esc(ci.label)}</div><a class="ci-val" href="${esc(ci.href)}">${esc(ci.value)}</a></div>`).join('');
+
+  // toggle active state
+  document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+
+  initReveal();
+}
+
+let io;
+function initReveal(){
+  const els = Array.from(document.querySelectorAll('[data-reveal]'));
+  if(io) io.disconnect();
+  io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const sibs = Array.from(el.parentElement ? el.parentElement.querySelectorAll(':scope > [data-reveal]') : [el]);
+        const idx = Math.max(0, sibs.indexOf(el));
+        el.style.transitionDelay = (idx*70)+'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+  els.forEach(el=>io.observe(el));
+}
+
+function setLang(lang){
+  try{ localStorage.setItem('lang', lang); }catch(e){}
+  render(lang);
+}
+
+document.getElementById('btn-fr').addEventListener('click', ()=>setLang('fr'));
+document.getElementById('btn-en').addEventListener('click', ()=>setLang('en'));
+
+let initial = 'fr';
+try{ const s = localStorage.getItem('lang'); if(s) initial = s; }catch(e){}
+if(initial==='fr' && (navigator.language||'').slice(0,2)!=='fr'){ /* keep fr default */ }
+render(initial);
+</script>
+</body>
+</html>
