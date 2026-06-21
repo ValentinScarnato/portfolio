@@ -114,7 +114,7 @@
   .soft-grid{display:flex;flex-wrap:wrap;gap:12px}
   .soft{display:inline-flex;align-items:center;gap:10px;background:#FEFCF8;border:1px solid #E8E2D6;border-radius:999px;padding:12px 20px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;transition:border-color .25s,transform .25s}
   .soft:hover{border-color:#1C1B18;transform:translateY(-2px)}
-  .soft .sdot{width:8px;height:8px;border-radius:50%;background:#E8613C}
+  .soft .sicon{width:18px;height:18px;color:#E8613C;flex:0 0 auto}
   .skill-card{background:#FEFCF8;border:1px solid #E8E2D6;border-radius:8px;padding:26px;transition:border-color .25s,transform .25s}
   .skill-card:hover{border-color:#1C1B18;transform:translateY(-3px)}
   .skill-card .top{display:flex;align-items:center;gap:11px;margin-bottom:18px}
@@ -412,6 +412,14 @@ const DATA = {
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+// soft-skill icons, mapped by order (same in FR & EN)
+const softIcons = [
+  '<path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/>',
+  '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>',
+  '<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>',
+  '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>',
+];
+
 function render(lang){
   const c = DATA[lang];
   document.documentElement.lang = lang;
@@ -445,8 +453,8 @@ function render(lang){
     </div>`).join('');
 
   // soft skills
-  document.getElementById('soft-grid').innerHTML = c.softSkills.map(s =>
-    `<span data-reveal class="soft"><span class="sdot"></span>${esc(s)}</span>`).join('');
+  document.getElementById('soft-grid').innerHTML = c.softSkills.map((s, i) =>
+    `<span data-reveal class="soft"><svg class="sicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${softIcons[i % softIcons.length]}</svg>${esc(s)}</span>`).join('');
 
   // experiences (timeline)
   document.getElementById('exp-list').innerHTML = c.experiences.map((e, i) =>
