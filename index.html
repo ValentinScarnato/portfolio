@@ -22,8 +22,19 @@
   ::selection{background:#E8613C;color:#fff}
   a{color:inherit;text-decoration:none}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  @keyframes twinkle{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.78)}}
+  @keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(42px,30px)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-38px,-28px)}}
+  @keyframes ping{0%{transform:scale(1);opacity:.7}70%{transform:scale(2.3);opacity:0}100%{opacity:0}}
 
-  .wrap{min-height:100vh;background:#F7F5F0}
+  .bg-fx{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.4}
+  .blob.b1{width:520px;height:520px;background:radial-gradient(circle,#F2C9B8,transparent 70%);top:-140px;left:-120px;animation:drift1 20s ease-in-out infinite}
+  .blob.b2{width:480px;height:480px;background:radial-gradient(circle,#CFE3D6,transparent 70%);top:42%;right:-150px;animation:drift2 24s ease-in-out infinite}
+  .blob.b3{width:420px;height:420px;background:radial-gradient(circle,#EADBC2,transparent 70%);top:76%;left:-130px;animation:drift1 27s ease-in-out infinite}
+
+  .wrap{min-height:100vh;position:relative;z-index:1}
   header{position:sticky;top:0;z-index:50;background:rgba(247,245,240,0.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #E2DCD0}
   nav{max-width:1180px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px}
   .brand{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.02em}
@@ -52,12 +63,16 @@
   .btn-ghost:hover{border-color:#1C1B18;transform:translateY(-2px)}
   .photo-frame{position:relative}
   .photo-frame .deco{position:absolute;inset:14px -14px -14px 14px;border:1.5px solid #E8613C;border-radius:6px;z-index:0}
-  .photo-frame .pic{position:relative;z-index:1;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:#EDE7DC;box-shadow:0 20px 50px -24px rgba(28,27,24,0.45)}
+  .photo-frame .pic{position:relative;z-index:1;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:#EDE7DC;box-shadow:0 20px 50px -24px rgba(28,27,24,0.45);animation:floatY 6.5s ease-in-out infinite}
   .photo-frame .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
 
   .marquee{border-top:1px solid #E2DCD0;border-bottom:1px solid #E2DCD0;padding:26px 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 24px;align-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(15px,1.5vw,19px);color:#1C1B18}
   .marquee span{display:inline-flex;align-items:center;gap:14px}
-  .marquee .star{color:#E8613C;font-size:0.85em}
+  .marquee .star{color:#E8613C;font-size:0.85em;animation:twinkle 3.2s ease-in-out infinite}
+  .marquee span:nth-child(2) .star{animation-delay:.5s}
+  .marquee span:nth-child(3) .star{animation-delay:1s}
+  .marquee span:nth-child(4) .star{animation-delay:1.5s}
+  .marquee span:nth-child(5) .star{animation-delay:2s}
 
   section{scroll-margin-top:80px}
   .about{padding:96px 0;display:grid;grid-template-columns:0.4fr 1fr;gap:48px}
@@ -83,8 +98,23 @@
   .lang-item .llevel{font-size:12.5px;color:#7A746A;font-weight:500;text-align:right;white-space:nowrap}
   .lang-meter{display:flex;gap:6px}
   .lang-meter i{flex:1;height:6px;border-radius:3px;background:#EDE7DC}
-  .lang-meter i.on{background:#E8613C}
+  .lang-meter i.on{background:#E8613C;transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.22,.61,.36,1)}
+  .lang-card.in .lang-meter i.on{transform:scaleX(1)}
+  .lang-meter i.on:nth-child(1){transition-delay:.10s}
+  .lang-meter i.on:nth-child(2){transition-delay:.18s}
+  .lang-meter i.on:nth-child(3){transition-delay:.26s}
+  .lang-meter i.on:nth-child(4){transition-delay:.34s}
+  .lang-meter i.on:nth-child(5){transition-delay:.42s}
   .lang-sub{font-size:12px;color:#9A9388;margin-top:9px}
+
+  .subhead{display:flex;align-items:center;gap:14px;margin:48px 0 22px}
+  .subhead h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#E8613C}
+  .subhead .line{flex:0 0 28px;height:2px;background:#E8613C;border-radius:2px}
+  .skills .subhead:first-of-type{margin-top:8px}
+  .soft-grid{display:flex;flex-wrap:wrap;gap:12px}
+  .soft{display:inline-flex;align-items:center;gap:10px;background:#FEFCF8;border:1px solid #E8E2D6;border-radius:999px;padding:12px 20px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;transition:border-color .25s,transform .25s}
+  .soft:hover{border-color:#1C1B18;transform:translateY(-2px)}
+  .soft .sdot{width:8px;height:8px;border-radius:50%;background:#E8613C}
   .skill-card{background:#FEFCF8;border:1px solid #E8E2D6;border-radius:8px;padding:26px;transition:border-color .25s,transform .25s}
   .skill-card:hover{border-color:#1C1B18;transform:translateY(-3px)}
   .skill-card .top{display:flex;align-items:center;gap:11px;margin-bottom:18px}
@@ -94,15 +124,18 @@
   .chip{font-size:13.5px;color:#3A362F;background:#F1ECE2;border-radius:6px;padding:6px 11px}
 
   .work{padding:40px 0 96px}
-  .work h2.title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(30px,4vw,48px);letter-spacing:-0.03em;margin-bottom:44px}
-  .exp{display:grid;grid-template-columns:0.32fr 1fr;gap:28px;padding:30px 0;border-top:1px solid #E2DCD0;transition:padding-left .25s}
-  .exp:hover{padding-left:8px}
-  .exp .period{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;color:#E8613C;letter-spacing:0.04em}
-  .exp .place{font-size:13.5px;color:#7A746A;margin-top:4px}
-  .exp .kind{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:#3A362F;background:#EDE7DC;border-radius:999px;padding:4px 11px}
-  .exp h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.2vw,25px);letter-spacing:-0.02em;margin-bottom:8px}
+  .work h2.title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(30px,4vw,48px);letter-spacing:-0.03em;margin-bottom:52px}
+  .timeline{position:relative;margin-left:7px;padding-left:38px;border-left:2px solid #E2DCD0}
+  .exp{position:relative;padding-bottom:48px}
+  .exp:last-child{padding-bottom:0}
+  .exp-dot{position:absolute;left:-44px;top:4px;width:15px;height:15px;border-radius:50%;background:#F7F5F0;border:3px solid #E8613C;box-shadow:0 0 0 5px #F7F5F0}
+  .exp-dot--live::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:2px solid #E8613C;animation:ping 2.2s ease-out infinite}
+  .exp-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:7px}
+  .exp-period{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;color:#E8613C;letter-spacing:0.04em}
+  .exp-kind{font-size:12px;font-weight:600;color:#3A362F;background:#EDE7DC;border-radius:999px;padding:4px 11px}
+  .exp h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.2vw,25px);letter-spacing:-0.02em;margin-bottom:3px}
+  .exp-place{font-size:13.5px;color:#7A746A;margin-bottom:10px}
   .exp .desc{font-size:15.5px;line-height:1.6;color:#564E48;max-width:60ch}
-  .work .bottomline{border-top:1px solid #E2DCD0}
 
   .projects{padding:40px 0 96px}
   .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
@@ -136,6 +169,12 @@
   [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
   [data-reveal].in{opacity:1;transform:translateY(0)}
 
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important}
+    [data-reveal]{opacity:1 !important;transform:none !important;transition:none !important}
+    .lang-meter i.on{transform:scaleX(1) !important}
+  }
+
   @media (max-width:860px){
     nav{padding:16px 22px}
     .navlinks{display:none}
@@ -149,6 +188,7 @@
 </style>
 </head>
 <body>
+<div class="bg-fx"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
 <div class="wrap" id="top">
   <header>
     <nav>
@@ -206,15 +246,20 @@
         <h2 data-t="skillsTitle"></h2>
         <p data-t="skillsSub"></p>
       </div>
-      <div data-reveal class="lang-card" id="lang-card"></div>
+      <div data-reveal class="subhead"><span class="line"></span><h4 data-t="hardLabel"></h4></div>
       <div class="skill-grid" id="skill-grid"></div>
+
+      <div data-reveal class="subhead"><span class="line"></span><h4 data-t="softLabel"></h4></div>
+      <div class="soft-grid" id="soft-grid"></div>
+
+      <div data-reveal class="subhead"><span class="line"></span><h4 data-t="langLabel"></h4></div>
+      <div data-reveal class="lang-card" id="lang-card"></div>
     </section>
 
     <!-- EXPERIENCE -->
     <section id="work" class="work">
       <h2 data-reveal class="title" data-t="workTitle"></h2>
-      <div id="exp-list"></div>
-      <div class="bottomline"></div>
+      <div class="timeline" id="exp-list"></div>
     </section>
 
     <!-- PROJECTS -->
@@ -267,6 +312,10 @@ const DATA = {
     ],
     skillsTitle:'Compétences',
     skillsSub:'Un profil hybride, à la frontière du fonctionnel et de la technique.',
+    hardLabel:'Compétences techniques',
+    softLabel:'Soft skills',
+    langLabel:'Langues',
+    softSkills:['Communication','Autonomie','Adaptabilité','Écoute active'],
     languagesTitle:'Langues',
     languages:[
       {name:'Français', level:'Langue maternelle', score:5},
@@ -319,6 +368,10 @@ const DATA = {
     ],
     skillsTitle:'Skills',
     skillsSub:'A hybrid profile, between the functional and the technical.',
+    hardLabel:'Hard skills',
+    softLabel:'Soft skills',
+    langLabel:'Languages',
+    softSkills:['Communication','Autonomy','Adaptability','Active listening'],
     languagesTitle:'Languages',
     languages:[
       {name:'French', level:'Native', score:5},
@@ -391,18 +444,21 @@ function render(lang){
       <div class="chips">${g.items.map(s=>`<span class="chip">${esc(s)}</span>`).join('')}</div>
     </div>`).join('');
 
-  // experiences
-  document.getElementById('exp-list').innerHTML = c.experiences.map(e =>
+  // soft skills
+  document.getElementById('soft-grid').innerHTML = c.softSkills.map(s =>
+    `<span data-reveal class="soft"><span class="sdot"></span>${esc(s)}</span>`).join('');
+
+  // experiences (timeline)
+  document.getElementById('exp-list').innerHTML = c.experiences.map((e, i) =>
     `<div data-reveal class="exp">
-      <div>
-        <div class="period">${esc(e.period)}</div>
-        <div class="place">${esc(e.place)}</div>
-        <div class="kind">${esc(e.kind)}</div>
+      <span class="exp-dot${i===0 ? ' exp-dot--live' : ''}"></span>
+      <div class="exp-head">
+        <span class="exp-period">${esc(e.period)}</span>
+        <span class="exp-kind">${esc(e.kind)}</span>
       </div>
-      <div>
-        <h3>${esc(e.org)}</h3>
-        <p class="desc">${esc(e.desc)}</p>
-      </div>
+      <h3>${esc(e.org)}</h3>
+      <div class="exp-place">${esc(e.place)}</div>
+      <p class="desc">${esc(e.desc)}</p>
     </div>`).join('');
 
   // projects
